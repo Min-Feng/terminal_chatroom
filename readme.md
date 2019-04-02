@@ -1,1 +1,3 @@
-<iframe width="420" height="315" src="https://youtu.be/CvLdaPf8GJQ" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<video src="https://www.youtube.com/watch?v=CvLdaPf8GJQ&feature=youtu.be" width="320" height="240" controls="controls">
+Your browser does not support the video tag.
+</video>
