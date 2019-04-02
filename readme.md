@@ -1,3 +1,2 @@
-<video src="https://www.youtube.com/watch?v=CvLdaPf8GJQ&feature=youtu.be" width="320" height="240" controls="controls">
-Your browser does not support the video tag.
-</video>
+<a href="https://youtu.be/CvLdaPf8GJQ" target="_blank"><img src="http://img.youtube.com/vi/R0uufIdWCD4/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
