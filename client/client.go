@@ -23,10 +23,9 @@ func main() {
 		conn.Close()
 	}()
 
-	end := make(chan int)
 	go receiveMessage(conn)
-	go sendMessage(conn, end)
-	<-end
+	sendMessage(conn)
+
 }
 
 func receiveMessage(conn net.Conn) {
@@ -36,11 +35,10 @@ func receiveMessage(conn net.Conn) {
 	}
 }
 
-func sendMessage(conn net.Conn, end chan int) {
+func sendMessage(conn net.Conn) {
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
 		// Scanner 會去掉\n 若沒有補上去,接收方會不知道斷點在那
 		conn.Write(append(scanner.Bytes(), '\n'))
 	}
-	close(end)
 }
