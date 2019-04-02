@@ -14,7 +14,7 @@ type client struct {
 
 // 特別處,將每個 connetion 與 channel 綁在一起,視為同一個
 // 由於chan型別,又傳遞一個chan
-// 因此字串通過不同的channel 轉發到特定 connetion
+// 因此字串通過不同的channel 轉發到特定 connection
 var enter chan client
 var leave chan client
 var broadcast chan string
@@ -49,6 +49,9 @@ func main() {
 }
 
 func clientManager() {
+	// 利用channel 將map型別維持在單一 goroutine
+	// 藉此達成concurrency safe
+	// 而不需要考慮加鎖開鎖
 	clients := make(map[client]bool)
 
 	var msg string
@@ -79,6 +82,8 @@ func clientManager() {
 }
 
 func sendMessage(cli client) {
+	// 如同每一個channel 綁定一個 connection
+	// 往channel 送訊息 ,如同對特定的connection 執行動作
 	for msg := range cli.msgChan {
 		fmt.Fprintf(cli.conn, "\t%s\n", msg)
 	}
